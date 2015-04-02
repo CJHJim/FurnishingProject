@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>	
+    <package name="supplier" namespace="/supplier" extends="struts-default">
+    
+       <!--登陆-->
+		<action name="supplierLogin">
+			<result name="success">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="supplier">
+			<result name="success">/WEB-INF/supplier/supplier.jsp</result>
+		</action>
+		<action name="supplierLoginAction" class="com.furnishing.net.controller.SupplierController" method="supplierLogin">
+			<result name="success" type="redirect">supplier.jsp</result>
+			<result name="error">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<!--改密-->
+		<action name="supplierAlterPage" >
+		  <result name="success">/WEB-INF/supplier/adminResetPass.jsp</result>
+		</action>
+		<action name="supplierAlterPassAction" class="com.furnishing.net.controller.SupplierController" method="supplierAlterPassAction">
+		  <result name="success">/WEB-INF/supplier/supplier.jsp</result>
+		</action>
+		<!-- 退出 -->
+		<action name="supplierExit" class="com.furnishing.net.controller.SupplierController" method="supplierExit">
+		   <result type="redirect" name="success">supplierLogin.jsp</result>
+		</action>
+		
+		<!-- 商家信息管理 -->
+		<action name="supplierInformation" class="com.furnishing.net.controller.SupplierController" method="supplierInformation">
+		  <result name="success">/WEB-INF/supplier/supplierInformation.jsp</result>
+		  <result  name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<action name="supUpdateSupplier" class="com.furnishing.net.controller.SupplierController" method="supUpdateSupplier">
+		  <result name="success">/WEB-INF/supplier/supplierInformation.jsp</result>
+		  <result  name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<!-- 操作员管理 -->
+		<action name="supOperatorManage" class="com.furnishing.net.controller.SupplierController" method="supOperatorManage">
+		   <result name="success">/WEB-INF/supplier/supOperatorManage.jsp</result>
+		  <result  name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<action name="addSupplierUserWin" >
+		   <result name="success">/WEB-INF/supplier/addSupplierUser.jsp</result>		  
+		</action>
+		<action name="addSupplierUser" class="com.furnishing.net.controller.SupplierController"  method="addSupplierUser">
+		   <result  name="login">/WEB-INF/supplier/login.jsp</result>	
+		   <result name="success">/WEB-INF/supplier/addSupplierUser.jsp</result>	
+		</action>
+		<action name="editSupplierUserWin" class="com.furnishing.net.controller.SupplierController" method="editSupplierUserWin">
+		   <result  name="login">/WEB-INF/supplier/login.jsp</result>	
+		   <result name="success">/WEB-INF/supplier/editSupplierUser.jsp</result>	
+		</action>
+		<action name="updateSupplierUser" class="com.furnishing.net.controller.SupplierController" method="updateSupplierUser">
+		   <result  name="login">/WEB-INF/supplier/login.jsp</result>	
+		   <result name="success">/WEB-INF/supplier/editSupplierUser.jsp</result>	
+		</action>
+		<action name="resetSupplierUserPassword" class="com.furnishing.net.controller.SupplierController" method="resetSupplierUserPassword">
+	      <result name="success">/WEB-INF/supplier/supOperatorManage.jsp</result>
+	      <result  name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<!--操作员权限管理 -->
+		<action name="supplierUserAuthManage" class="com.furnishing.net.controller.SupplierController"  method="supplierUserAuthManage">
+		  <result name="success">/WEB-INF/supplier/supplierUserAuthManage.jsp</result>
+	       <result  name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<action name="changeAuthSupplierUser" class="com.furnishing.net.controller.SupplierController" method="changeAuthSupplierUser">
+		    <result name="success">/WEB-INF/supplier/supplierUserAuthManage.jsp</result>
+	        <result  name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<action name="updateSupOperatorAuth" class="com.furnishing.net.controller.SupplierController" method="updateSupOperatorAuth">		
+		    <result name="success">/WEB-INF/supplier/supplierUserAuthManage.jsp</result>
+	         <result  name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<!-- 物流信息管理 -->
+		<action name="logisticsManage" class="com.furnishing.net.controller.SupplierController" method="logisticManage">
+		    <result name="success">/WEB-INF/supplier/logisticsManage.jsp</result>
+	       <result  name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<action name="editLogisticWin" class="com.furnishing.net.controller.SupplierController" method="editLogisticWin">
+		   <result name="success">/WEB-INF/supplier/editLogistic.jsp</result>
+	       <result  name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<action name="updateLogisticNumber" class="com.furnishing.net.controller.SupplierController" method="updateLogisticNumber">
+		   <result name="success">/WEB-INF/supplier/editLogistic.jsp</result>
+	        <result  name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<action name="addLogisticNumber">
+		    <result name="success">/WEB-INF/supplier/addLogistic.jsp</result>
+	        <result  name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<action name="newLogisticNumber" class="com.furnishing.net.controller.SupplierController" method="newLogisticNumber">
+		   <result name="success">/WEB-INF/supplier/addLogistic.jsp</result>
+	         <result  name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<action name="showLogisticDetailPage" class="com.furnishing.net.controller.SupplierController" method="showLogisticDetailPage">
+		     <result name="success">/WEB-INF/supplier/showLogisticDetailPage.jsp</result>
+	          <result  name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		
+		<!-- 商品管理 -->
+		<action name="goodsManage" class="com.furnishing.net.controller.GoodsController" method="goodsManage">
+		    <result name="success">/WEB-INF/supplier/goodsManage.jsp</result>
+	        <result  name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<action name="addGoodsWin" class="com.furnishing.net.controller.GoodsController" method="addGoodsWin">
+		    <result name="success">/WEB-INF/supplier/addGoods.jsp</result>
+	        <result  name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<action name="addGoods" class="com.furnishing.net.controller.GoodsController" method="addGoods">
+		    <result name="success">/WEB-INF/supplier/addGoods.jsp</result>
+	         <result  name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<action name="editGoodsWin" class="com.furnishing.net.controller.GoodsController" method="editGoodsWin">
+		    <result name="success">/WEB-INF/supplier/editGoods.jsp</result>
+	        <result  name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<action name="updateGoods" class="com.furnishing.net.controller.GoodsController" method="updateGoods">
+		    <result name="success">/WEB-INF/supplier/editGoods.jsp</result>
+	        <result  name="login">/WEB-INF/supplier/login.jsp</result>			
+		</action>
+		<!-- 商品图片管理 -->
+		<action name="goodsImageManage" class="com.furnishing.net.controller.GoodsController" method="goodsImageManage">
+		   <result name="success">/WEB-INF/supplier/goodsImageManage.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+	       <result name="error" >/WEB-INF/supplier/goodsManage.jsp</result>		
+		</action>
+		<action name="addGoodsImageWin" class="com.furnishing.net.controller.GoodsController" method="addGoodsImageWin">
+		   <result name="success">/WEB-INF/supplier/addGoodsImage.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+	       <result name="error">/WEB-INF/supplier/goodsManage.jsp</result>
+		</action>
+		<action name="addGoodsImage" class="com.furnishing.net.controller.GoodsController" method="addGoodsImage">
+		   <result name="success">/WEB-INF/supplier/addGoodsImage.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+	       <result name="error">/WEB-INF/supplier/goodsManage.jsp</result>
+		</action>
+		<action name="editGoodsImage" class="com.furnishing.net.controller.GoodsController" method="editGoodsImage">
+		   <result name="success">/WEB-INF/supplier/editGoodsImage.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+	       <result name="error">/WEB-INF/supplier/goodsManage.jsp</result>
+		</action>
+		<action name="updateGoodsImage" class="com.furnishing.net.controller.GoodsController" method="updateGoodsImage">
+		  <result name="success">/WEB-INF/supplier/editGoodsImage.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+	       <result name="error">/WEB-INF/supplier/goodsManage.jsp</result>
+		</action>
+		<!-- 关联商品管理 -->
+		<action name="relevantGoodsManage" class="com.furnishing.net.controller.GoodsController" method="relevantGoodsManage" >
+		  <result name="success">/WEB-INF/supplier/relevantGoodsManage.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+	       <result name="error" >/WEB-INF/supplier/goodsManage.jsp</result>	
+		</action>
+		<action name="delRelevantGoods" class="com.furnishing.net.controller.GoodsController" method="delRelevantGoods">
+		   <result name="success">/WEB-INF/supplier/relevantGoodsManage.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="addRelevantGoodsWin" class="com.furnishing.net.controller.GoodsController" method="addRelevantGoodsWin">
+		   <result name="success">/WEB-INF/supplier/addRelevantGoods.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="addRelevantGoods" class="com.furnishing.net.controller.GoodsController"  method="addRelevantGoods">
+		   <result name="success">/WEB-INF/supplier/addRelevantGoods.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="editRelevantGoods" class="com.furnishing.net.controller.GoodsController" method="editRelevantGoods">
+		   <result name="success">/WEB-INF/supplier/editRelevantGoods.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="updateRelevantGoods" class="com.furnishing.net.controller.GoodsController" method="updateRelevantGoods">
+		  <result name="success">/WEB-INF/supplier/editRelevantGoods.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<!-- 商品配件管理 -->
+		<action name="accessoryManage" class="com.furnishing.net.controller.GoodsController" method="accessoryManage">
+		    <result name="success">/WEB-INF/supplier/accessoryManage.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+	       <result name="error" >/WEB-INF/supplier/goodsManage.jsp</result>	
+		</action>
+		<action name="delAccessoryGoods" class="com.furnishing.net.controller.GoodsController" method="delAccessoryGoods">
+		   <result name="success">/WEB-INF/supplier/accessoryManage.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="addAccessoryGoodsWin"  class="com.furnishing.net.controller.GoodsController"  method="addAccessoryGoodsWin">
+		  <result name="success">/WEB-INF/supplier/addAccessoryGoods.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="addAccessoryGoods" class="com.furnishing.net.controller.GoodsController" method="addAccessoryGoods">
+		   <result name="success">/WEB-INF/supplier/addAccessoryGoods.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>  
+		</action>
+		<action name="editAccessoryGoods" class="com.furnishing.net.controller.GoodsController" method="editAccessoryGoods">
+		   <result name="success">/WEB-INF/supplier/editAccessoryGoods.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>  
+		</action>
+		<action name="updateAccessoryGoods"  class="com.furnishing.net.controller.GoodsController" method="updateAccessoryGoods">
+		   <result name="success">/WEB-INF/supplier/editAccessoryGoods.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>  
+		</action>
+		<!-- 商品属性之材质管理 -->
+		<action name="goodsMaterialManage" class="com.furnishing.net.controller.GoodsController" method="goodsMaterialManage">
+		    <result name="success">/WEB-INF/supplier/goodsMaterialManage.jsp</result>
+	        <result name="login">/WEB-INF/supplier/login.jsp</result>  		
+		</action>
+		<action name="delGoodsMaterial" class="com.furnishing.net.controller.GoodsController" method="delGoodsMaterial">
+		   <result name="success">/WEB-INF/supplier/goodsMaterialManage.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>		
+		</action>
+		<action name="addGoodsMaterialWin" class="com.furnishing.net.controller.GoodsController" method="addGoodsMaterialWin">
+		   <result name="success">/WEB-INF/supplier/addGoodsMaterial.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<action name="addGoodsMaterial" class="com.furnishing.net.controller.GoodsController" method="addGoodsMaterial">
+		   <result name="success">/WEB-INF/supplier/addGoodsMaterial.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="editGoodsMaterial" class="com.furnishing.net.controller.GoodsController" method="editGoodsMaterial">
+		   <result name="success">/WEB-INF/supplier/editGoodsMaterial.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="updateGoodsMaterial" class="com.furnishing.net.controller.GoodsController" method="updateGoodsMaterial">
+		  <result name="success">/WEB-INF/supplier/editGoodsMaterial.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>		
+		</action>
+		<!-- 商品属性之颜色 -->
+		<action name="goodsColorManage" class="com.furnishing.net.controller.GoodsController" method="goodsColorManage">
+		   <result name="success">/WEB-INF/supplier/goodsColorManage.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+	       <result name="error" >/WEB-INF/supplier/goodsManage.jsp</result>	
+		</action>
+		<action name="delGoodsColor" class="com.furnishing.net.controller.GoodsController" method="delGoodsColor">		
+		  <result name="success">/WEB-INF/supplier/goodsColorManage.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="addGoodsColorWin" class="com.furnishing.net.controller.GoodsController" method="addGoodsColorWin">
+		   <result name="success">/WEB-INF/supplier/addGoodsColor.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="addGoodsColor"  class="com.furnishing.net.controller.GoodsController"  method="addGoodsColor">
+		  <result name="success">/WEB-INF/supplier/addGoodsColor.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="editGoodsColorWin"  class="com.furnishing.net.controller.GoodsController"   method="editGoodsColorWin">
+		   <result name="success">/WEB-INF/supplier/editGoodsColor.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="updateGoodsColor" class="com.furnishing.net.controller.GoodsController" method="updateGoodsColor">
+		   <result name="success">/WEB-INF/supplier/editGoodsColor.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<!-- 商品属性之尺寸管理 -->
+		<action name="goodsSizeManage" class="com.furnishing.net.controller.GoodsController" method="goodsSizeManage">
+		   <result name="success">/WEB-INF/supplier/goodsSizeManage.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+	       <result name="error">/WEB-INF/supplier/goodsManage.jsp</result>
+		</action>
+		<action name="delGoodsSize" class="com.furnishing.net.controller.GoodsController" method="delGoodsSize" >
+		   <result name="success">/WEB-INF/supplier/goodsSizeManage.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="addGoodsSizeWin"  class="com.furnishing.net.controller.GoodsController"  method="addGoodsSizeWin">
+		   <result name="success">/WEB-INF/supplier/addGoodsSize.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="addGoodsSize" class="com.furnishing.net.controller.GoodsController" method="addGoodsSize">
+		   <result name="success">/WEB-INF/supplier/addGoodsSize.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="editGoodsSizeWin"  class="com.furnishing.net.controller.GoodsController" method="editGoodsSizeWin">
+		   <result name="success">/WEB-INF/supplier/editGoodsSize.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="updateGoodsSize" class="com.furnishing.net.controller.GoodsController" method="updateGoodsSize">
+		   <result name="success">/WEB-INF/supplier/editGoodsSize.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		
+		<!--产品信息管理-->
+		<action name="productManage" class="com.furnishing.net.controller.ProductController" method="productManage">
+		    <result name="success">/WEB-INF/supplier/productManage.jsp</result>
+	        <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="addProductWin" class="com.furnishing.net.controller.ProductController" method="addProductWin">		
+		    <result name="success">/WEB-INF/supplier/addProduct.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="addProduct" class="com.furnishing.net.controller.ProductController" method="addProduct">
+		   <result name="success">/WEB-INF/supplier/addProduct.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="editProductWin" class="com.furnishing.net.controller.ProductController" method="editProductWin">
+		     <result name="success">/WEB-INF/supplier/editProduct.jsp</result>
+	         <result name="login">/WEB-INF/supplier/login.jsp</result>
+	         <result type="redirect" name="error">productManage.jsp</result>
+		</action>
+		<action name="updateProduct" class="com.furnishing.net.controller.ProductController" method="updateProduct">
+		     <result name="success">/WEB-INF/supplier/editProduct.jsp</result>
+	        <result name="login">/WEB-INF/supplier/login.jsp</result>
+	         <result type="redirect" name="error">productManage.jsp</result>
+		</action>
+		
+		<!-- 客户需求管理 -->
+		<action name="supRequireManage" class="com.furnishing.net.controller.ProductController" method="supRequireManage">
+		   <result name="success">/WEB-INF/supplier/supRequireManage.jsp</result>
+	        <result name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<action name="showSupRequireDetail" class="com.furnishing.net.controller.ProductController" method="showSupRequireDetail">
+		    <result name="success">/WEB-INF/supplier/showSupRequireDetail.jsp</result>
+		     <result name="error">/WEB-INF/supplier/supRequireManage.jsp</result>
+	        <result name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<action name="bidRequire" class="com.furnishing.net.controller.ProductController"  method="bidRequire">
+		   <result name="success">/WEB-INF/supplier/bidOrderManage.jsp</result>
+		   <result name="error">/WEB-INF/supplier/supRequireManage.jsp</result>
+	        <result name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<!-- 竞标订单管理 -->
+		<action name="bidOrderManage" class="com.furnishing.net.controller.ProductController" method="bidOrderManage">
+		   <result name="success">/WEB-INF/supplier/bidOrderManage.jsp</result>
+	        <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="showSupRequireOrderDetail" class="com.furnishing.net.controller.ProductController" method="showSupRequireDetail">
+		    <result name="success">/WEB-INF/supplier/showSupRequireOrderDetail.jsp</result>
+	        <result name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<action name="editSupRequireOrder" class="com.furnishing.net.controller.ProductController"  method="editSupRequireOrder">
+		    <result name="success">/WEB-INF/supplier/editBidOrder.jsp</result>
+		    <result name="error">/WEB-INF/supplier/bidOrderManage.jsp</result>
+	        <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="updateBidOrder" class="com.furnishing.net.controller.ProductController"  method="updateBidOrder">
+		    <result name="success">/WEB-INF/supplier/editBidOrder.jsp</result>
+	        <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<!--普通订单管理-->
+		<action name="supplierOrderManage" class="com.furnishing.net.controller.ShopController"  method="supplierOrderManage">
+		   <result name="success">/WEB-INF/supplier/supplierOrderManage.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="showSupplierOrderDetail" class="com.furnishing.net.controller.ShopController" method="showSupplierOrderDetail">
+		   <result name="error">/WEB-INF/supplier/supplierOrderManage.jsp</result>
+		   <result name="success">/WEB-INF/supplier/showSupplierOrderDetail.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<!--供应商查看及进行评价-->
+		<action name="showSupplierCommentDetail"  class="com.furnishing.net.controller.ShopController" method="showSupplierCommentDetail">
+		   <result name="error">/WEB-INF/supplier/supplierOrderManage.jsp</result>
+		   <result name="success">/WEB-INF/supplier/showSupplierOrderCommentDetail.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<action name="supplierCommentOrder" class="com.furnishing.net.controller.ShopController" method="supplierCommentOrder">
+		   <result name="success">/WEB-INF/supplier/showSupplierOrderCommentDetail.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<action name="replyComment" class="com.furnishing.net.controller.ShopController" method="replyComment">
+		   <result name="success">/WEB-INF/supplier/showSupplierOrderCommentDetail.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>	
+		</action>
+		<action name="changeSupplierOrderState" class="com.furnishing.net.controller.ShopController" method="changeSupplierOrderState">
+		   <result name="success">/WEB-INF/supplier/changeSupplierOrderState.jsp</result>
+		   <result name="error">/WEB-INF/supplier/supplierOrderManage.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="changeSupState" class="com.furnishing.net.controller.ShopController" method="changeSupState">
+		   <result name="success">/WEB-INF/supplier/changeSupplierOrderState.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<!--库存管理 -->
+		<action name="stockManage" class="com.furnishing.net.controller.ProductController" method="stockManage">
+		  <result name="success">/WEB-INF/supplier/stockManage.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<!--入库管理-->
+		<action name="stockInManage" class="com.furnishing.net.controller.ProductController" method="stockInManage">
+		   <result name="success">/WEB-INF/supplier/stockInManage.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="addStockInProductWin"  class="com.furnishing.net.controller.ProductController" method="addStockInProductWin">
+		   <result name="success">/WEB-INF/supplier/addStockProduct.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="addStockInProduct" class="com.furnishing.net.controller.ProductController" method="addStockInProduct" >
+		    <result name="success">/WEB-INF/supplier/addStockProduct.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		
+		<!-- 出库管理 -->
+		<action name="stockOutManage" class="com.furnishing.net.controller.ProductController" method="stockOutManage">
+		   <result name="success">/WEB-INF/supplier/stockOutManage.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="minusStockOutProductWin" class="com.furnishing.net.controller.ProductController"  method="addStockInProductWin">
+		   <result name="success">/WEB-INF/supplier/minusStockProduct.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="minusStockInProduct" class="com.furnishing.net.controller.ProductController" method="minusStockInProduct" >
+		   <result name="success">/WEB-INF/supplier/minusStockProduct.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		
+		<!-- 退货订单管理 -->
+		<action name="returnOrderManage"  class="com.furnishing.net.controller.ShopController"  method="returnOrderManage">
+		   <result name="success">/WEB-INF/supplier/returnOrderManage.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="returnOrderDetail" class="com.furnishing.net.controller.ShopController" method="returnOrderDetail">
+		   <result name="success">/WEB-INF/supplier/returnOrderDetail.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action> 
+		<action name="alterOrderDetail"  class="com.furnishing.net.controller.ShopController"  method="alterOrderDetail">
+		   <result name="success">/WEB-INF/supplier/returnOrderDetail.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		
+		<!-- 换货订单管理 -->
+		<action name="exchangeOrderManage"  class="com.furnishing.net.controller.ShopController"  method="exchangeOrderManage">
+		  <result name="success">/WEB-INF/supplier/exchangeOrderManage.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="exchangeOrderDetail" class="com.furnishing.net.controller.ShopController" method="exchangeOrderDetail">
+		   <result name="success">/WEB-INF/supplier/exchangeOrderDetail.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action> 
+		<action name="alterExchangeOrderDetail"  class="com.furnishing.net.controller.ShopController"  method="alterExchangeOrderDetail">
+		   <result name="success">/WEB-INF/supplier/exchangeOrderDetail.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<!-- 历史订单管理 -->
+		<action name="historyOrderManage" class="com.furnishing.net.controller.ShopController"  method="historyOrderManage">
+		   <result name="success">/WEB-INF/supplier/historyOrderManage.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<action name="showHistoryOrderDetail" class="com.furnishing.net.controller.ShopController" method="showHistoryOrderDetail">
+		   <result name="error">/WEB-INF/supplier/historyOrderManage.jsp</result>
+		   <result name="success">/WEB-INF/supplier/showHistoryOrderDetail.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		
+		<!-- 商家信誉 -->
+		<action name="supplierCredit" class="com.furnishing.net.controller.SupplierController" method="supplierCredit">		
+		    <result name="success">/WEB-INF/supplier/supplierCredit.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<!-- 商家评价管理 -->
+		<action name="supplierComment"  class="com.furnishing.net.controller.SupplierController"  method="supplierComment">
+		   <result name="success">/WEB-INF/supplier/supplierComment.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<!--产品评价-->
+		<action name="productComment" class="com.furnishing.net.controller.SupplierController" method="productComment">
+		  <result name="success">/WEB-INF/supplier/productComment.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<!--对顾客的评价-->
+		<action name="forCustomerComment"  class="com.furnishing.net.controller.SupplierController" method="forCustomerComment">
+		   <result name="success">/WEB-INF/supplier/forCustomerComment.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<!--报表管理-->
+		<action name="statementManage"  class="com.furnishing.net.controller.SupplierController"  method="statementManage">
+		   <result name="success">/WEB-INF/supplier/statementProduct.jsp</result>
+	       <result name="login">/WEB-INF/supplier/login.jsp</result>
+		</action>
+		<!-- 导出报表数据 -->
+		 <action name="emportStatementProduct" class="com.furnishing.net.controller.SupplierController" method="emportStatementProduct">
+		     <result name="success" type="stream">
+		       <param name="contentType">application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</param>
+			   <param name="inputName">inputStream</param>
+			   <param name="contentDisposition">attachment;filename="${downloadFileName}"</param>
+			   <param name="bufferSize">40960</param>
+			 </result>
+			 <result name="error">/WEB-INF/supplier/statementProduct.jsp</result>
+			 <result name="login">/WEB-INF/supplier/login.jsp</result>
+		  </action>
+		  
+		  <!--供应商团购-->
+		  <action name="supplierGroupManage" class="com.furnishing.net.controller.SupplierController" method="supplierGroupManage">
+		     <result name="success">/WEB-INF/supplier/supplierGroupManage.jsp</result>
+	         <result name="login">/WEB-INF/supplier/login.jsp</result>
+		  </action>
+		  <action name="delSupplierGroup" class="com.furnishing.net.controller.SupplierController" method="delSupplierGroup">
+		     <result name="success">/WEB-INF/supplier/supplierGroupManage.jsp</result>
+	         <result name="login">/WEB-INF/supplier/login.jsp</result>
+		  </action>
+		  <action name="showSupplierGroupDetail" class="com.furnishing.net.controller.SupplierController" method="showSupplierGroupDetail">
+		     <result name="success">/WEB-INF/supplier/showSupplierGroupDetail.jsp</result>
+	         <result name="login">/WEB-INF/supplier/login.jsp</result>
+		  </action>
+		  <!-- 查看竞标状态 -->
+		  <action name="showSupplierGroupBid" class="com.furnishing.net.controller.SupplierController" method="showSupplierGroupBid">
+		     <result name="success">/WEB-INF/supplier/showSupplierGroupBidManage.jsp</result>
+	         <result name="login">/WEB-INF/supplier/login.jsp</result>
+		  </action>
+		  <!--由商家将团购生成订单-->
+		  <action name="supplierGroupToOrder" class="com.furnishing.net.controller.SupplierController" method="supplierGroupToOrder">
+		     <result name="success">/WEB-INF/supplier/supplierGroupManage.jsp</result>
+	         <result name="login">/WEB-INF/supplier/login.jsp</result>
+		  </action>
+		  <!-- 团购大厅 -->
+		  <action name="supplierGroupHouseManage" class="com.furnishing.net.controller.SupplierController" method="supplierGroupHouseManage">
+		     <result name="success">/WEB-INF/supplier/supplierGroupHouseManage.jsp</result>
+	         <result name="login">/WEB-INF/supplier/login.jsp</result>
+		  </action>
+		  <action name="supplierJoinIntoDetail" class="com.furnishing.net.controller.SupplierController" method="showSupplierGroupDetail">
+		    <result name="success">/WEB-INF/supplier/supplierJoinIntoDetail.jsp</result>
+		     <result name="error">/WEB-INF/supplier/supplierGroupHouseManage.jsp</result>
+	         <result name="login">/WEB-INF/supplier/login.jsp</result>
+		  </action>
+		  <action name="supplierJoinIntoGroup" class="com.furnishing.net.controller.SupplierController" method="supplierJoinIntoGroup">
+		     <result name="success">/WEB-INF/supplier/supplierJoinIntoDetail.jsp</result>
+	         <result name="login">/WEB-INF/supplier/login.jsp</result>
+		  </action>
+		
+    </package>     
+
+</struts>

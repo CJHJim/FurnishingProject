@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+    <package name="customer" namespace="/" extends="struts-default">
+    
+       <!--登陆-->
+		<action name="login">
+			<result name="success">/login.jsp</result>
+		</action>
+		<action name="customer" class="com.furnishing.net.controller.CustomerController" method="showCustomer">
+			<result name="success">/WEB-INF/customer/customer.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+		<action name="customerLoginAction" class="com.furnishing.net.controller.CustomerController" method="customerLoginAction">
+			<result name="success">/WEB-INF/customer/customer.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+		<!-- 注册 -->
+		<action name="register">
+		 <result name="success">/register.jsp</result>
+		</action>
+		<action name="customerRegister" class="com.furnishing.net.controller.CustomerController" method="customerRegister">
+		 <result name="success">/login.jsp</result>
+		 <result name="error">/register.jsp</result>
+		</action>
+		<!--改密-->
+		<action name="adResetPass" >
+		  <result name="success">/WEB-INF/customer/customerResetPass.jsp</result>
+		</action>
+		<action name="alterCustomerPass" class="com.furnishing.net.controller.CustomerController" method="alterCustomerPass">
+		  <result name="success">/WEB-INF/customer/customerResetPass.jsp</result>
+		  <result name="login">/login.jsp</result>
+		</action>
+		<!-- 修改个人信息 -->
+		<action name="updateCustomerInfo" class="com.furnishing.net.controller.CustomerController" method="updateCustomerInfo">
+		   <result name="success">/WEB-INF/customer/customer.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<!-- 退出 -->
+		<action name="customerExit" class="com.furnishing.net.controller.CustomerController" method="customerExit">
+		   <result type="redirect" name="success">login.jsp</result>
+		</action>
+		<action name="customerCredit" class="com.furnishing.net.controller.CustomerController" method="customerCredit">
+		     <result name="success">/WEB-INF/customer/customerCredit.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		
+		<!--需求发布管理-->
+		<action name="myProductManage" class="com.furnishing.net.controller.ProductController" method="myProductManage">
+		   <result name="success">/WEB-INF/customer/myProductManage.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<action name="addMyProductWin" class="com.furnishing.net.controller.ProductController" method="addMyProductWin">
+		   <result name="success">/WEB-INF/customer/addMyProduct.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<action name="addMyProduct" class="com.furnishing.net.controller.ProductController" method="addMyProduct">
+		   <result name="success">/WEB-INF/customer/addMyProduct.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<action name="editMyRequireWin" class="com.furnishing.net.controller.ProductController"  method="editMyRequireWin">
+		    <result name="success">/WEB-INF/customer/editMyProduct.jsp</result>
+		    <result name="login">/login.jsp</result>
+		    <result name="error">/WEB-INF/customer/myProductManage.jsp</result>
+		</action>
+		<action name="updateMyProduct" class="com.furnishing.net.controller.ProductController" method="updateMyProduct">
+		   <result name="success">/WEB-INF/customer/editMyProduct.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+			
+		<!-- 收货地址 -->	
+		<action name="myAddressManage" class="com.furnishing.net.controller.CustomerController" method="myAddressManage">
+		   <result name="success">/WEB-INF/customer/myAddressManage.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<action name="addMyAddressWin" class="com.furnishing.net.controller.CustomerController" method="addMyAddressWin">
+		    <result name="success">/WEB-INF/customer/addMyAddress.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<action name="addMyAddress" class="com.furnishing.net.controller.CustomerController" method="addMyAddress">
+		   <result name="success">/WEB-INF/customer/addMyAddress.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<action name="editMyAddressWin" class="com.furnishing.net.controller.CustomerController" method="editMyAddressWin">
+		   <result name="success">/WEB-INF/customer/editMyAddress.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<action name="updateMyAddress" class="com.furnishing.net.controller.CustomerController" method="updateMyAddress">
+		   <result name="success">/WEB-INF/customer/editMyAddress.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<!-- 认证企业 -->
+		<action name="certificatedSupplierManage" class="com.furnishing.net.controller.CustomerController" method="certificatedSupplierManage">
+		   <result name="success">/WEB-INF/customer/certificatedSupplierManage.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<!--成功案例-->
+		<action name="successdCaseManage" class="com.furnishing.net.controller.CustomerController" method="successdCaseManage">
+		   <result name="success">/WEB-INF/customer/successCaseManage.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>	
+		<!--投标商家管理 -->
+		<action name="requireBidSupplierManage" class="com.furnishing.net.controller.CustomerController" method="requireBidSupplierManage">
+		   <result name="success">/WEB-INF/customer/requireBidSupplierManage.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>	
+	    <action name="showMyRequireWin" class="com.furnishing.net.controller.ProductController"  method="editMyRequireWin">
+		    <result name="success">/WEB-INF/customer/showMyProduct.jsp</result>
+		    <result name="login">/login.jsp</result>
+		    <result name="error" type="redirect">myProductManage.jsp</result>
+		</action>
+		<action name="showBidSupplierDetail" class="com.furnishing.net.controller.CustomerController"  method="showBidSupplierDetail">
+		   <result name="success">/WEB-INF/customer/showBidSupplierDetail.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<action name="showBidSupplierSpecialDesc" class="com.furnishing.net.controller.CustomerController" method="showBidSupplierSpecialDesc">
+	      <result name="success">/WEB-INF/customer/showBidSupplierSpecialDesc.jsp</result>
+	      <result name="login">/login.jsp</result>
+		</action>
+		<!-- 选标 -->
+		<action name="selectedRequire"  class="com.furnishing.net.controller.CustomerController"  method="selectedRequire">
+		   <result name="success">/WEB-INF/customer/showBidSupplierSpecialDesc.jsp</result>
+	       <result name="login">/login.jsp</result>
+		</action>
+		
+		<!-- 购买过的店铺 -->
+		<action name="supplierHistory" class="com.furnishing.net.controller.CustomerController" method="supplierHistory">
+		   <result name="success">/WEB-INF/customer/supplierHistory.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<!--我的收藏-->
+		<action name="myCollection" class="com.furnishing.net.controller.CustomerController" method="myCollection">
+		   <result name="success">/WEB-INF/customer/myCollection.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		
+		<!-- 我的购物车 -->
+		<action name="myCar" class="com.furnishing.net.controller.CustomerController" method="myCar">
+		   <result name="success">/WEB-INF/customer/myCarManage.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		
+		<!-- 删除购物车中的产品 -->
+		<action name="deleteProductInShopCart" class="com.furnishing.net.controller.CustomerController" method="deleteProductInShopCart">
+		    <result name="success">/WEB-INF/customer/myCarManage.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<!-- 将商品移入收藏夹 -->
+		<action name="moveToCollection" class="com.furnishing.net.controller.CustomerController" method="moveToCollection">
+		   <result name="success">/WEB-INF/customer/myCarManage.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<!-- 更新购物车的数量 -->
+		<action name="updateProductQuanatity" class="com.furnishing.net.controller.CustomerController" method="updateProductQuanatity">
+		    <result name="success">/WEB-INF/customer/myCarManage.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<!-- 批量删除购物项 -->
+		<action name="delSelectedProductInCart" class="com.furnishing.net.controller.CustomerController" method="delSelectedProductInCart">
+		    <result name="success">/WEB-INF/customer/myCarManage.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<!-- 批量移入我的收藏 -->
+		<action name="moveSelectedToCollection" class="com.furnishing.net.controller.CustomerController" method="moveSelectedToCollection">
+		   <result name="success">/WEB-INF/customer/myCarManage.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<!--由购物车生成订单-->
+		<action name="cartToOrder" class="com.furnishing.net.controller.CustomerController" method="cartToOrder">
+		  <result name="success">/WEB-INF/customer/confirm_order.jsp</result>
+		  <result name="error">/WEB-INF/customer/myCarManage.jsp</result>
+		  <result name="login">/login.jsp</result>
+		</action>
+		<!--这里生产订单之后，可以直接跳转到支付页面-->
+		<action name="confirmOrder" class="com.furnishing.net.controller.CustomerController" method="confirmOrder">
+		   <result name="success">/WEB-INF/customer/myOrderManage.jsp</result>
+		   <result name="error">/WEB-INF/customer/confirm_order.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>		
+		
+		<!--订单管理-->
+		<action name="myOrderManage" class="com.furnishing.net.controller.ShopController" method="myOrderManage">
+		  <result name="success">/WEB-INF/customer/myOrderManage.jsp</result>
+		  <result name="login">/login.jsp</result>
+		</action>
+		<action name="deleteMyOrder" class="com.furnishing.net.controller.ShopController" method="deleteMyOrder">
+		   <result name="success">/WEB-INF/customer/myOrderManage.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<action name="showCustomerOrderDetail"  class="com.furnishing.net.controller.ShopController"  method="showCustomerOrderDetail">		
+		   <result name="success">/WEB-INF/customer/showCustomerOrderDetail.jsp</result>
+		   <result name="error">/WEB-INF/customer/myOrderManage.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<!-- 修改收货地址 -->
+		<action name="alterMyAddress" class="com.furnishing.net.controller.ShopController" method="alterMyAddress">
+		    <result name="success">/WEB-INF/customer/showAlterMyOrderAddressDetail.jsp</result>
+		    <result name="error">/WEB-INF/customer/myOrderManage.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="alterMyOrderAddress" class="com.furnishing.net.controller.ShopController" method="alterMyOrderAddress">
+		   <result name="success">/WEB-INF/customer/showAlterMyOrderAddressDetail.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<!-- 投诉 -->
+		<action name="myCustomerComplain"  class="com.furnishing.net.controller.ShopController" method="myCustomerComplain">
+		   <result name="success">/WEB-INF/customer/myCustomerComplainDetail.jsp</result>
+		   <result name="error">/WEB-INF/customer/myOrderManage.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<action name="submitCustomerComplain" class="com.furnishing.net.controller.ShopController" method="submitCustomerComplain">
+		   <result name="success">/WEB-INF/customer/myCustomerComplainDetail.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<!-- 仲裁 -->
+		<action name="myCustomerArbitration" class="com.furnishing.net.controller.ShopController" method="myCustomerArbitration">
+		   <result name="success">/WEB-INF/customer/myCustomerArbitrationDetail.jsp</result>		  
+		   <result name="login">/login.jsp</result>
+		</action>
+		<action name="submitCustomerArbitration"  class="com.furnishing.net.controller.ShopController"  method="submitCustomerArbitration">
+		   <result name="success">/WEB-INF/customer/myCustomerArbitrationDetail.jsp</result>		  
+		   <result name="login">/login.jsp</result>
+		</action>
+		<!-- 申请退货 /换货-->
+		<action name="returnGoodsDetail" class="com.furnishing.net.controller.ShopController" method="returnGoodsDetail">
+		   <result name="success">/WEB-INF/customer/returnGoodsDetail.jsp</result>
+		   <result name="error">/WEB-INF/customer/myOrderManage.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<!--提交退换货信息-->
+		<action name="submitReturnOrder" class="com.furnishing.net.controller.ShopController" method="submitReturnOrder">
+		   <result name="success">/WEB-INF/customer/returnGoodsDetail.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<!--退货 -->
+		<action name="returnMyOrderManage" class="com.furnishing.net.controller.ShopController" method="returnMyOrderManage">
+		   <result name="success">/WEB-INF/customer/returnMyOrderManage.jsp</result>
+		  <result name="login">/login.jsp</result>
+		</action>
+		<action name="showReturnOrderDetail"  class="com.furnishing.net.controller.ShopController"  method="showReturnOrderDetail">
+		   <result name="success">/WEB-INF/customer/showReturnOrderDetail.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<!-- 换货 -->
+		<action name="exchangeMyOrderManage" class="com.furnishing.net.controller.ShopController" method="exchangeMyOrderManage">		
+		   <result name="success">/WEB-INF/customer/exchangeMyOrder.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<action name="showExchangeOrderDetail" class="com.furnishing.net.controller.ShopController" method="showExchangeOrderDetail">
+		   <result name="success">/WEB-INF/customer/showExchangeOrderDetail.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<!--历史订单管理-->
+		<action name="myHistoryOrderManage"  class="com.furnishing.net.controller.ShopController"  method="myHistoryOrderManage">
+		  <result name="success">/WEB-INF/customer/myHistoryOrderManage.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<!-- 用户再次购买 -->
+		<action name="customerBuyAgain" class="com.furnishing.net.controller.ShopController" method="customerBuyAgain">
+		    <result name="success">/WEB-INF/customer/myOrderManage.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<!--显示顾客评价-->
+		<action name="showCustomerOrderCommentDetail"  class="com.furnishing.net.controller.ShopController"  method="showCustomerOrderCommentDetail">
+		    <result name="success">/WEB-INF/customer/showCustomerOrderCommentDetail.jsp</result>
+		    <result name="error">/WEB-INF/customer/myOrderManage.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<!-- 对商家进行评价 -->
+		<action name="customerCommentOrder" class="com.furnishing.net.controller.ShopController" method="customerCommentOrder">
+		    <result name="success">/WEB-INF/customer/showCustomerOrderCommentDetail.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<!-- 对购买产品的订单项进行评价 -->
+		<action name="customerCommentItem" class="com.furnishing.net.controller.ShopController" method="customerCommentItem">
+		    <result name="success">/WEB-INF/customer/customerCommentItem.jsp</result>
+		    <result name="error">/WEB-INF/customer/showCustomerOrderCommentDetail.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<!-- 提交产品订单项的评价 -->
+		<action name="submitItemComment" class="com.furnishing.net.controller.ShopController" method="submitItemComment">
+		    <result name="success">/WEB-INF/customer/customerCommentItem.jsp</result>
+		    <result name="error">/WEB-INF/customer/showCustomerOrderCommentDetail.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<!-- 追评 -->
+		<action name="customerOrderCommentAgain"  class="com.furnishing.net.controller.ShopController" method="customerOrderCommentAgain">
+		    <result name="success">/WEB-INF/customer/addedComment.jsp</result>
+		    <result name="error">/WEB-INF/customer/myOrderManage.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="saveAddedComment" class="com.furnishing.net.controller.ShopController" method="saveAddedComment">
+		    <result name="success">/WEB-INF/customer/addedComment.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<!-- 确认收货 -->
+		<action name="receiveGoods" class="com.furnishing.net.controller.ShopController" method="receiveGoods">
+		    <result name="success">/WEB-INF/customer/receiveGoods.jsp</result>
+		    <result name="error">/WEB-INF/customer/myOrderManage.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<action name="confirmReceiveGoods" class="com.furnishing.net.controller.ShopController" method="confirmReceiveGoods">
+		    <result name="success">/WEB-INF/customer/receiveGoods.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<!--批量-->
+		<action name="receiveGoodsByBatch" class="com.furnishing.net.controller.ShopController" method="receiveGoodsByBatch">
+		   <result name="success">/WEB-INF/customer/receiveGoodsByBatch.jsp</result>
+		   <result name="error">/WEB-INF/customer/myOrderManage.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		<action name="confirmReceiveGoodsByBatch" class="com.furnishing.net.controller.ShopController" method="confirmReceiveGoodsByBatch">
+		   <result name="success">/WEB-INF/customer/receiveGoodsByBatch.jsp</result>
+		   <result name="error">/WEB-INF/customer/myOrderManage.jsp</result>
+		   <result name="login">/login.jsp</result>
+		</action>
+		
+		<!-- 支付 -->
+		<action name="moneyRecordManage" class="com.furnishing.net.controller.CustomerController" method="moneyRecordManage">
+		    <result name="success">/WEB-INF/customer/moneyRecordManage.jsp</result>
+		    <result name="login">/login.jsp</result>
+		</action>
+		<!--银行-->
+		<action name="bankManage" class="com.furnishing.net.controller.CustomerController" method="bankManage">
+	      <result name="success">/WEB-INF/customer/customerBankManage.jsp</result>
+	      <result name="login">/login.jsp</result>
+		</action>
+		<action name="addCustomerBankWin" class="com.furnishing.net.controller.CustomerController" method="addCustomerBankWin">
+		    <result name="success">/WEB-INF/customer/addCustomerBank.jsp</result>
+		    <result name="error">/WEB-INF/customer/customerBankManage.jsp</result>
+	        <result name="login">/login.jsp</result>
+		</action>
+		<action name="addCustomerBank" class="com.furnishing.net.controller.CustomerController" method="addCustomerBank">
+		   <result name="success">/WEB-INF/customer/addCustomerBank.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<!-- 账户安全 -->
+		<action name="safeManage" class="com.furnishing.net.controller.CustomerController" method="safeManage">
+		   <result name="success">/WEB-INF/customer/safeManage.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<action name="editPassQuestion" class="com.furnishing.net.controller.CustomerController" method="editPassQuestion">
+		    <result name="success">/WEB-INF/customer/passQuestionManage.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<action name="addCustomerPassQuestionWin" class="com.furnishing.net.controller.CustomerController" method="addCustomerPassQuestionWin">
+		     <result name="success">/WEB-INF/customer/addCustomerPassQuestion.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<action name="addCustomerPassQuestion" class="com.furnishing.net.controller.CustomerController" method="addCustomerPassQuestion">
+		   <result name="success">/WEB-INF/customer/addCustomerPassQuestion.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<action name="alterCustomerPassQuestionWin" class="com.furnishing.net.controller.CustomerController" method="alterCustomerPassQuestionWin">		
+		    <result name="success">/WEB-INF/customer/alterCustomerPassQuestion.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<action name="alterCustomerPassQuestion" class="com.furnishing.net.controller.CustomerController" method="alterCustomerPassQuestion">
+		   <result name="success">/WEB-INF/customer/alterCustomerPassQuestion.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<action name="editPassEmail" class="com.furnishing.net.controller.CustomerController" method="editPassEmail">
+		   <result name="success">/WEB-INF/customer/editPassEmail.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<action name="updatePassEmail" class="com.furnishing.net.controller.CustomerController" method="updatePassEmail">
+		     <result name="success">/WEB-INF/customer/editPassEmail.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<!--绑定手机 -->
+		<action name="editPassTelephone" class="com.furnishing.net.controller.CustomerController" method="updatePassEmail">
+		   <result name="success">/WEB-INF/customer/editPassTelephone.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<action name="updatePassTelephone" class="com.furnishing.net.controller.CustomerController" method="updatePassTelephone">
+		   <result name="success">/WEB-INF/customer/editPassTelephone.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<action name="editPassCertificate" class="com.furnishing.net.controller.CustomerController" method="updatePassEmail">
+		   <result name="success">/WEB-INF/customer/editPassCertificate.jsp</result>		  
+	       <result name="login">/login.jsp</result>		
+		</action>
+		<!--账户信息管理-->
+		<action name="myAccount"  class="com.furnishing.net.controller.CustomerController"  method="myAccount">
+		     <result name="success">/WEB-INF/customer/myAccount.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<!--修改支付密码-->
+		<action name="alterPayPassword">
+		   <result name="success">/WEB-INF/customer/selectPasswordType.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<!--我的评价-->
+		<action name="myCommentManage" class="com.furnishing.net.controller.CustomerController" method="myCommentManage">
+		   <result name="success">/WEB-INF/customer/myCommentManage.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<!--顾客对他人的评价-->
+		<action name="mySupplierCommentManage" class="com.furnishing.net.controller.CustomerController" method="mySupplierCommentManage">
+		   <result name="success">/WEB-INF/customer/mySupplierCommentManage.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<!--退款 -->
+		<action name="returnMoneyManage"  class="com.furnishing.net.controller.CustomerController"  method="returnMoneyManage">
+		   <result name="success">/WEB-INF/customer/returnMoneyOrder.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<!--退款详情-->
+		<action name="showReturnOrderDetail" class="com.furnishing.net.controller.CustomerController" method="showReturnOrderDetail">
+		    <result name="success">/WEB-INF/customer/showReturnMoneyOrderDetail.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<!-- 投诉管理 -->
+		<action name="customerComplain" class="com.furnishing.net.controller.CustomerController" method="customerComplain">
+		   <result name="success">/WEB-INF/customer/myComplain.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<!-- 详情 -->
+		<action name="showCustomerComplain" class="com.furnishing.net.controller.CustomerController" method="showCustomerComplain">
+		    <result name="success">/WEB-INF/customer/showCustomerComplain.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<!-- 仲裁 -->
+		<action name="customerArbitration" class="com.furnishing.net.controller.CustomerController" method="customerArbitration">
+		   <result name="success">/WEB-INF/customer/myArbitration.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<action name="showCustomerArbitration" class="com.furnishing.net.controller.CustomerController" method="showCustomerComplain">
+		   <result name="success">/WEB-INF/customer/showCustomerArbitration.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<!--我的关注 -->
+		<action name="myFocus" class="com.furnishing.net.controller.CustomerController" method="myFocus">
+		  <result name="success">/WEB-INF/customer/myFocus.jsp</result>		  
+	      <result name="login">/login.jsp</result>
+		</action>
+		<!--更改我的关注-->
+		<action name="updateMyLocation" class="com.furnishing.net.controller.CustomerController" method="updateMyLocation">
+		  <result name="success">/WEB-INF/customer/myFocus.jsp</result>		  
+	      <result name="login">/login.jsp</result>
+		</action>
+		<!-- 修改关注类型 -->
+		<action name="updateMyFocusGoodsType"  class="com.furnishing.net.controller.CustomerController"  method="updateMyFocusGoodsType">
+		   <result name="success">/WEB-INF/customer/updateMyFocusGoodsType.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<action name="addSelectedType"  class="com.furnishing.net.controller.CustomerController" method="addSelectedType">
+		   <result name="success">/WEB-INF/customer/myFocus.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<!-- 修改关注材质 -->
+		<action name="updateMyFocusGoodsMaterial" class="com.furnishing.net.controller.CustomerController" method="updateMyFocusGoodsMaterial">
+		   <result name="success">/WEB-INF/customer/updateMyFocusGoodsMaterial.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<action name="addSelectedMaterial" class="com.furnishing.net.controller.CustomerController" method="addSelectedMaterial">
+		   <result name="success">/WEB-INF/customer/myFocus.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<!-- 修改关注颜色 -->
+		<action name="updateMyFocusGoodsColor" class="com.furnishing.net.controller.CustomerController" method="updateMyFocusGoodsColor">
+		   <result name="success">/WEB-INF/customer/updateMyFocusGoodsColor.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<action name="addSelectedColor" class="com.furnishing.net.controller.CustomerController" method="addSelectedColor">
+		   <result name="success">/WEB-INF/customer/myFocus.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<!-- 我的团购 -->
+		<action name="myGroup" class="com.furnishing.net.controller.CustomerController"  method="myGroup">
+		   <result name="success">/WEB-INF/customer/myGroup.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<!-- 删除 -->
+		<action name="delMyGroup"  class="com.furnishing.net.controller.CustomerController" method="delMyGroup">
+		   <result name="success">/WEB-INF/customer/myGroup.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<!--显示参与竞标团购的商家 -->
+		<action name="showGroupSupplier" class="com.furnishing.net.controller.CustomerController" method="showGroupSupplier">
+		    <result name="success">/WEB-INF/customer/showGroupSupplier.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<action name="selectedGroupSupplier" class="com.furnishing.net.controller.CustomerController" method="selectedGroupSupplier">
+		    <result name="success">/WEB-INF/customer/showGroupSupplier.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<action name="showGroupDetail" class="com.furnishing.net.controller.CustomerController" method="showGroupDetail">
+		   <result name="success">/WEB-INF/customer/showGroupDetail.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<!--团购大厅-->
+		<action name="groupHouseManage"  class="com.furnishing.net.controller.CustomerController"  method="groupHouseManage">
+		   <result name="success">/WEB-INF/customer/groupHouseManage.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<!-- 顾客参与团购 -->
+		<action name="showJoinIntoGroupDetail" class="com.furnishing.net.controller.CustomerController" method="showJoinIntoGroupDetail">
+		   <result name="success">/WEB-INF/customer/showJoinIntoGroupDetail.jsp</result>	
+		   <result name="error">/WEB-INF/customer/groupHouseManage.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<action name="joinIntoGroup" class="com.furnishing.net.controller.CustomerController" method="joinIntoGroup">
+		   <result name="success">/WEB-INF/customer/showJoinIntoGroupDetail.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<action name="showGroupHouseDetail"  class="com.furnishing.net.controller.CustomerController"  method="showGroupDetail">
+		    <result name="success">/WEB-INF/customer/showGroupHouseDetail.jsp</result>		  
+	       <result name="login">/login.jsp</result>
+		</action>
+		<!-- 顾客前台页面发布需求 -->
+		<action name="customerAddRequire"  class="com.furnishing.net.controller.CustomerController"  method="customerAddRequire">
+		    <result name="success">/WEB-INF/customer/addMyProduct.jsp</result>	
+		</action>
+		
+		<!--顾客前台页面发起团购-->
+		<action name="customerAddGroup"  class="com.furnishing.net.controller.CustomerController"  method="addNewMyGroup">
+		 <result name="success">/WEB-INF/customer/addNewMyGroup.jsp</result>	
+		</action>
+		
+		<!-- 前台商品定制 -->
+		<action name="productCustomized"  class="com.furnishing.net.controller.CustomerController"  method="productCustomized">
+		   <result name="success">/product-customized.jsp</result>
+		</action>
+		
+    </package>
+    
+</struts>

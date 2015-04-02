@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/com/furnishing/net/controller/AdminController.java=UTF-8
+encoding//src/com/furnishing/net/controller/CustomerController.java=UTF-8
+encoding//src/com/furnishing/net/dao/impl/HibernateDao.java=UTF-8
+encoding//src/com/furnishing/net/util/EmportData.java=UTF-8
+encoding//src/com/furnishing/net/util/FileUploadAction.java=UTF-8
+encoding//src/com/furnishing/net/util/FileUtil.java=UTF-8
+encoding//src/com/furnishing/net/util/StringUtils.java=UTF-8

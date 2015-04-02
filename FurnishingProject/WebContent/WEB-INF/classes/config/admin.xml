@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+    <package name="admin" namespace="/admin" extends="struts-default">
+    
+       <!--登陆-->
+		<action name="adminLogin">
+			<result name="success">/WEB-INF/admin/login.jsp</result>
+		</action>
+		<action name="admin">
+			<result name="success">/WEB-INF/admin/admin.jsp</result>
+		</action>
+		<action name="adminLoginAction" class="com.furnishing.net.controller.AdminController" method="adminLogin">
+			<result name="success">/WEB-INF/admin/admin.jsp</result>
+			<result name="error">/WEB-INF/admin/login.jsp</result>
+		</action>
+		<!--改密-->
+		<action name="adResetPass" >
+		  <result name="success">/WEB-INF/admin/adminResetPass.jsp</result>
+		</action>
+		<action name="alterAdminPass" class="com.furnishing.net.controller.AdminController" method="adAlterPassword">
+		  <result name="success">/WEB-INF/admin/adminResetPass.jsp</result>
+		</action>
+		<!-- 退出 -->
+		<action name="adminExit" class="com.furnishing.net.controller.AdminController" method="adminExit">
+		   <result type="redirect" name="success">adminLogin.jsp</result>
+		</action>
+		
+		<!-- 操作员管理 -->
+		<action name="adminManage" class="com.furnishing.net.controller.AdminController" method="adminManage">
+		  <result name="success">/WEB-INF/admin/adminManage.jsp</result>
+		</action>
+		<action name="addAdminWindow" class="com.furnishing.net.controller.AdminController" method="addAdminWindow" >
+		   <result name="success">/WEB-INF/admin/addAdmin.jsp</result>
+		</action>
+		<action name="addAdmin" class="com.furnishing.net.controller.AdminController" method="addAdmin">
+		  <result name="success">/WEB-INF/admin/addAdmin.jsp</result>
+		</action>
+		<action name="editAdminWindow" class="com.furnishing.net.controller.AdminController" method="editAdminWindow">
+		  <result name="success">/WEB-INF/admin/editAdmin.jsp</result>
+		  <result name="login" type="redirect">/adminManage.jsp</result>
+		</action>
+		<action name="updateAdmin" class="com.furnishing.net.controller.AdminController" method="updateAdmin">
+		  <result name="success">/WEB-INF/admin/editAdmin.jsp</result>
+		</action>
+		<!--操作员角色-->
+		<action name="roleManage" class="com.furnishing.net.controller.AdminController" method="roleManage">
+		  <result name="success">/WEB-INF/admin/roleManage.jsp</result>
+		</action>
+		<action name="addRoleWindow" class="com.furnishing.net.controller.AdminController" method="addRoleWindow">
+		  <result name="success">/WEB-INF/admin/addRole.jsp</result>
+		</action>
+		<action name="addRole" class="com.furnishing.net.controller.AdminController" method="addRole">
+		  <result name="success">/WEB-INF/admin/addRole.jsp</result>
+		</action>
+		<action name="editRoleWindow" class="com.furnishing.net.controller.AdminController"  method="editRoleWindow">
+		  <result name="success">/WEB-INF/admin/editRole.jsp</result>
+		</action>
+		<action name="editRole" class="com.furnishing.net.controller.AdminController" method="editRole">
+		   <result name="success">/WEB-INF/admin/editRole.jsp</result>
+		</action>
+		<!-- 商品分类管理 -->
+		<action name="goodsCategoryManage" class="com.furnishing.net.controller.GoodsController" method="goodsCategoryManage">
+		  <result name="success">/WEB-INF/admin/goodsCategoryManage.jsp</result>
+		</action>
+		<action name="addGoodsCategoryWin" class="com.furnishing.net.controller.GoodsController" method="addGoodsCategoryWin" >
+		   <result name="success">/WEB-INF/admin/addGoodsCategory.jsp</result>
+		</action>
+		<action name="addGoodsCategory" class="com.furnishing.net.controller.GoodsController" method="addGoodsCategory">
+		    <result name="success">/WEB-INF/admin/addGoodsCategory.jsp</result>
+		</action>
+		<action name="editGoodsCategoryWin" class="com.furnishing.net.controller.GoodsController" method="editGoodsCategoryWin">
+		  <result name="success">/WEB-INF/admin/editGoodsCategory.jsp</result>
+		</action>
+		<action name="updateGoodsCategory" class="com.furnishing.net.controller.GoodsController" method="updateGoodsCategory">
+		  <result name="success">/WEB-INF/admin/editGoodsCategory.jsp</result>
+		</action>
+	
+		
+		<!-- 商品类型 -->
+		<action name="goodsTypeManage" class="com.furnishing.net.controller.GoodsController" method="goodsTypeManage">
+		  <result name="success">/WEB-INF/admin/goodsTypeManage.jsp</result>
+		  <result   name="login">/WEB-INF/admin/login.jsp</result>
+		</action>
+		<action name="addGoodsTypeWin" class="com.furnishing.net.controller.GoodsController" method="addGoodsTypeWin">
+		   <result name="success">/WEB-INF/admin/addGoodsType.jsp</result>
+		   <result   name="login">/WEB-INF/admin/login.jsp</result>
+		</action>
+		<action name="addGoodsType" method="addGoodsType" class="com.furnishing.net.controller.GoodsController" >
+		   <result name="success">/WEB-INF/admin/addGoodsType.jsp</result>
+		   <result   name="login">/WEB-INF/admin/login.jsp</result>
+		</action>
+		<action name="editGoodsTypeWin" class="com.furnishing.net.controller.GoodsController" method="editGoodsTypeWin">
+		   <result name="success">/WEB-INF/admin/editGoodsType.jsp</result>
+		   <result   name="login">/WEB-INF/admin/login.jsp</result>
+		</action>
+		<action name="updateGoodsType" class="com.furnishing.net.controller.GoodsController" method="updateGoodsType">
+		    <result name="success">/WEB-INF/admin/editGoodsType.jsp</result>
+		    <result name="login">/WEB-INF/admin/login.jsp</result>
+		</action>
+		<!-- 商品分类类型关联管理 -->
+		<action name="goodsCategoryTypeManage" class="com.furnishing.net.controller.GoodsController" method="goodsCategoryTypeManage">
+		    <result name="success">/WEB-INF/admin/goodsCategoryTypeManage.jsp</result>
+		    <result name="login">/WEB-INF/admin/login.jsp</result>
+		</action>
+		<action name="addGoodsCateTypeWin" class="com.furnishing.net.controller.GoodsController" method="addGoodsCateTypeWin">
+		   <result name="success">/WEB-INF/admin/addGoodsCateType.jsp</result>
+		    <result name="login">/WEB-INF/admin/login.jsp</result>
+		</action>
+		<action name="addGoodsCategoryType" class="com.furnishing.net.controller.GoodsController" method="addGoodsCategoryType">
+		    <result name="success">/WEB-INF/admin/addGoodsCateType.jsp</result>
+		    <result name="login">/WEB-INF/admin/login.jsp</result>
+		</action>
+		<action name="editGoodsCateTypeWin" class="com.furnishing.net.controller.GoodsController" method="editGoodsCateTypeWin">
+		   <result name="success">/WEB-INF/admin/editGoodsCateType.jsp</result>
+		    <result name="login">/WEB-INF/admin/login.jsp</result>
+		</action>
+		<action name="updateGoodsCategoryType"  class="com.furnishing.net.controller.GoodsController"  method="updateGoodsCategoryType">
+		  <result name="success">/WEB-INF/admin/editGoodsCateType.jsp</result>
+		    <result name="login">/WEB-INF/admin/login.jsp</result>
+		</action>
+		
+		<!-- 供应商等级管理 -->
+		<action name="supplierClassManage" class="com.furnishing.net.controller.SupplierController" method="supplierClassManage">
+		  <result name="success">/WEB-INF/admin/supplierClassManage.jsp</result>
+		</action>
+		<action name="addSupplierClassWin">
+		  <result name="success">/WEB-INF/admin/addSupplierClass.jsp</result>
+		</action>
+		<action name="addSupplierClass" class="com.furnishing.net.controller.SupplierController" method="addSupplierClass">
+		  <result name="success">/WEB-INF/admin/addSupplierClass.jsp</result>
+		</action>
+		<action name="editSupplierClassWin" class="com.furnishing.net.controller.SupplierController" method="editSupplierClassWin">
+		  <result name="success">/WEB-INF/admin/editSupplierClass.jsp</result>
+		</action>
+		<action name="saveSupplierClass" method="saveSupplierClass" class="com.furnishing.net.controller.SupplierController">
+		  <result name="success">/WEB-INF/admin/editSupplierClass.jsp</result>
+		</action>	
+		<!--供应商管理-->
+		<action name="supplierManage" class="com.furnishing.net.controller.SupplierController" method="supplierManage">
+		  <result name="success">/WEB-INF/admin/supplierManage.jsp</result>
+		</action>
+		<action name="addSupplierWindow" class="com.furnishing.net.controller.SupplierController" method="addSupplierWindow">
+		   <result name="success">/WEB-INF/admin/addSupplier.jsp</result>
+		</action>
+		<action name="addSupplier" class="com.furnishing.net.controller.SupplierController" method="addSupplier">
+		  <result name="success">/WEB-INF/admin/addSupplier.jsp</result>
+		</action>
+		<action name="supplierLock" class="com.furnishing.net.controller.SupplierController" method="supplierLock">
+		  <result name="login">/WEB-INF/admin/login.jsp</result>
+		  <result type="redirect" name="success">supplierManage.jsp</result>
+		</action>
+		<action name="supplierCertificate" class="com.furnishing.net.controller.SupplierController" method="supplierCertificate">
+		    <result name="login">/WEB-INF/admin/login.jsp</result>
+		    <result name="success">/WEB-INF/admin/supplierManage.jsp</result>
+		</action>
+		
+		<!-- 会员管理 -->
+		<action name="customerManage" class="com.furnishing.net.controller.CustomerController" method="customerManage">
+		  <result name="success">/WEB-INF/admin/customerManage.jsp</result>
+		</action>
+		<action name="customerLock" class="com.furnishing.net.controller.CustomerController" method="customerLock">
+		   <result type="redirect" name="success">customerManage.jsp</result>
+		</action>
+		<action name="addCustomerWindow" class="com.furnishing.net.controller.CustomerController" method="addCustomerWindow">
+		   <result name="success">/WEB-INF/admin/addCustomer.jsp</result>
+		</action>
+		<action name="addCustomer" class="com.furnishing.net.controller.CustomerController" method="addCustomer">
+		   <result name="success">/WEB-INF/admin/addCustomer.jsp</result>
+		</action>
+		
+		<!-- 系统设置 -->
+		<action name="systemSetting" class="com.furnishing.net.controller.AdminController" method="systemSetting">
+		  <result name="success">/WEB-INF/admin/systemSetting.jsp</result>
+		</action>
+		<action name="updateSystemParam" class="com.furnishing.net.controller.AdminController" method="updateSystemParam">
+		  <result name="success">/WEB-INF/admin/systemSetting.jsp</result>
+		</action>
+		
+		<!-- 操作员权限管理 -->
+		<action name="operateAuthManage" class="com.furnishing.net.controller.AdminController" method="operateAuthManage">
+		   <result name="success">/WEB-INF/admin/operateAuthManage.jsp</result>
+		</action>
+		<action name="updateOperatorAuth" class="com.furnishing.net.controller.AdminController" method="updateOperatorAuth">
+		   <result name="success">/WEB-INF/admin/operateAuthManage.jsp</result>
+		</action>
+		<action name="changeAuthAdmin" class="com.furnishing.net.controller.AdminController" method="changeAuthAdmin">
+		   <result name="success">/WEB-INF/admin/operateAuthManage.jsp</result>
+		</action>
+		<!-- 风格 -->
+		<action name="styleManage" class="com.furnishing.net.controller.GoodsController" method="styleManage">
+		   <result name="success">/WEB-INF/admin/styleManage.jsp</result>
+		</action>
+		<action name="addGoodsStyleWin">
+		   <result name="success">/WEB-INF/admin/addGoodsStyle.jsp</result>
+		</action>
+		<action name="addGoodsStyle" class="com.furnishing.net.controller.GoodsController" method="addGoodsStyle" >
+		   <result name="success">/WEB-INF/admin/addGoodsStyle.jsp</result>
+		</action>
+		<action name="editGoodsStyleWin"  class="com.furnishing.net.controller.GoodsController"  method="editGoodsStyleWin">
+		  <result name="success">/WEB-INF/admin/editGoodsStyle.jsp</result>
+		</action>
+		<action name="updateGoodsStyle"  class="com.furnishing.net.controller.GoodsController"  method="updateGoodsStyle">
+		   <result name="success">/WEB-INF/admin/editGoodsStyle.jsp</result>
+		</action>
+		<!-- 类型风格关联管理 -->
+		<action name="typeStyleManage" class="com.furnishing.net.controller.GoodsController"  method="typeStyleManage">
+		   <result name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/typeStyleManage.jsp</result>
+		</action>
+		<action name="addGoodsTypeStyleWin" class="com.furnishing.net.controller.GoodsController" method="addGoodsTypeStyleWin">
+		   <result name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/addTypeStyle.jsp</result>
+		</action>
+		<action name="addTypeStyle" class="com.furnishing.net.controller.GoodsController" method="addTypeStyle">
+		  <result name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/addTypeStyle.jsp</result>
+		</action>
+		<action name="editGoodsTypeStyleWin" class="com.furnishing.net.controller.GoodsController" method="editGoodsTypeStyleWin">
+		   <result name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/editTypeStyle.jsp</result>
+		</action>
+		<action name="updateTypeStyle" class="com.furnishing.net.controller.GoodsController" method="updateTypeStyle">
+		   <result name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/editTypeStyle.jsp</result>
+		</action>
+		<!--品牌-->
+		<action name="brandManage" class="com.furnishing.net.controller.GoodsController" method="brandManage">
+		   <result name="success">/WEB-INF/admin/brandManage.jsp</result>
+		   <result   name="login">/WEB-INF/admin/login.jsp</result>
+		</action>
+		<action name="addBrandWin" class="com.furnishing.net.controller.GoodsController" method="addBrandWin">
+		  <result name="success">/WEB-INF/admin/addBrand.jsp</result>
+		  <result   name="login">/WEB-INF/admin/login.jsp</result>
+		</action>
+		<action name="addBrand" class="com.furnishing.net.controller.GoodsController" method="addBrand" >
+		   <result name="success">/WEB-INF/admin/addBrand.jsp</result>
+		   <result   name="login">/WEB-INF/admin/login.jsp</result>
+		</action>
+		<action name="editGoodsBrand" class="com.furnishing.net.controller.GoodsController" method="editGoodsBrand" >
+		   <result  name="login">/WEB-INF/admin/login.jsp</result>
+		     <result name="success">/WEB-INF/admin/editBrand.jsp</result>
+		</action>
+		<action name="updateBrand" class="com.furnishing.net.controller.GoodsController" method="updateBrand">
+		    <result  name="login">/WEB-INF/admin/login.jsp</result>
+		     <result name="success">/WEB-INF/admin/editBrand.jsp</result>
+		</action>
+		
+		<action name="typeBrandManage" class="com.furnishing.net.controller.GoodsController" method="typeBrandManage">
+		   <result  name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/typeBrandManage.jsp</result>
+		</action>
+		<action name="addTypeBrandWin" class="com.furnishing.net.controller.GoodsController"  method="addTypeBrandWin">
+		   <result  name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/addTypeBrand.jsp</result>
+		</action>
+		<action name="addTypeBrand" class="com.furnishing.net.controller.GoodsController" method="addTypeBrand">
+		   <result  name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/addTypeBrand.jsp</result>
+		</action>
+		<action name="editTypeBrandWin" class="com.furnishing.net.controller.GoodsController" method="editTypeBrandWin">
+		   <result  name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/editTypeBrand.jsp</result>
+		</action>
+		<action name="updateTypeBrand" class="com.furnishing.net.controller.GoodsController" method="updateTypeBrand">
+		   <result  name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/editTypeBrand.jsp</result>
+		</action>
+		
+		<!--订单管理-->
+		<action name="orderManage" class="com.furnishing.net.controller.ShopController" method="orderManage">
+		  <result name="success">/WEB-INF/admin/orderManage.jsp</result>
+		  <result name="login">/WEB-INF/admin/login.jsp</result>
+		</action>
+		<action name="showAdminOrderDetail" class="com.furnishing.net.controller.ShopController" method="showAdminOrderDetail">
+		  <result name="success">/WEB-INF/admin/showAdminOrderDetail.jsp</result>
+		  <result name="error">/WEB-INF/admin/orderManage.jsp</result>
+		  <result name="login">/WEB-INF/admin/login.jsp</result>
+		</action>
+		<action name="showCommentDetail" class="com.furnishing.net.controller.ShopController" method="showCommentDetail">
+		  <result name="success">/WEB-INF/admin/showAdminOrderCommDetail.jsp</result>
+		  <result name="error">/WEB-INF/admin/orderManage.jsp</result>
+		  <result name="login">/WEB-INF/admin/login.jsp</result>
+		</action>
+		
+		<!--商品材质管理 -->
+		<action name="materialManage" class="com.furnishing.net.controller.GoodAttributeController" method="materialManage">
+		    <result name="login">/WEB-INF/admin/login.jsp</result>
+		    <result name="success">/WEB-INF/admin/materialManage.jsp</result>
+		</action>
+		<action name="addMaterialWin" class="com.furnishing.net.controller.GoodAttributeController" method="addMaterialWin">
+		  <result   name="login">/WEB-INF/admin/login.jsp</result>
+		  <result name="success">/WEB-INF/admin/addMaterial.jsp</result>
+		</action>
+		<action name="addMaterial" class="com.furnishing.net.controller.GoodAttributeController" method="addMaterial" >
+		  <result   name="login">/WEB-INF/admin/login.jsp</result>
+		  <result name="success">/WEB-INF/admin/addMaterial.jsp</result>
+		</action>
+		<action name="editMaterialWin" class="com.furnishing.net.controller.GoodAttributeController" method="editMaterialWin">
+		  <result   name="login">/WEB-INF/admin/login.jsp</result>
+		   <result   name="error">materialManage.jsp</result>
+		  <result name="success">/WEB-INF/admin/editMaterial.jsp</result>
+		</action>
+		<action name="updateMaterial" class="com.furnishing.net.controller.GoodAttributeController" method="updateMaterial">
+		   <result   name="login">/WEB-INF/admin/login.jsp</result>
+		  <result name="success">/WEB-INF/admin/editMaterial.jsp</result>
+		</action>
+		<!-- 商品颜色管理 -->
+		<action name="colorManage" class="com.furnishing.net.controller.GoodAttributeController" method="colorManage">
+		    <result   name="login">/WEB-INF/admin/login.jsp</result>
+		    <result name="success">/WEB-INF/admin/colorManage.jsp</result>
+		</action>
+		<action name="addColorWin" class="com.furnishing.net.controller.GoodAttributeController" method="addColorWin">
+		    <result   name="login">/WEB-INF/admin/login.jsp</result>
+		    <result name="success">/WEB-INF/admin/addColor.jsp</result>
+		</action>
+		<action name="addColor" class="com.furnishing.net.controller.GoodAttributeController" method="addColor">
+		   <result type="redirect"  name="login">/WEB-INF/admin/login.jsp</result>
+		    <result name="success">/WEB-INF/admin/addColor.jsp</result>
+		</action>
+		<action name="editColorWin" class="com.furnishing.net.controller.GoodAttributeController" method="editColorWin">
+		    <result   name="login">/WEB-INF/admin/login.jsp</result>
+		    <result name="success">/WEB-INF/admin/editColor.jsp</result>
+		    <result name="error" type="redirect">colorManage.jsp</result>
+		</action>
+		<action name="updateColor" class="com.furnishing.net.controller.GoodAttributeController" method="updateColor">
+		   <result   name="login">/WEB-INF/admin/login.jsp</result>
+		    <result name="success">/WEB-INF/admin/editColor.jsp</result>
+		</action>
+		<!-- 尺寸管理 -->
+		<action name="sizeManage" class="com.furnishing.net.controller.GoodAttributeController" method="sizeManage">
+		   <result   name="login">/WEB-INF/admin/login.jsp</result>
+		    <result name="success">/WEB-INF/admin/sizeManage.jsp</result>
+		</action>
+		<action name="addSizeWin" class="com.furnishing.net.controller.GoodAttributeController" method="addSizeWin">
+		  <result   name="login">/WEB-INF/admin/login.jsp</result>
+		    <result name="success">/WEB-INF/admin/addSize.jsp</result>
+		</action>
+		<action name="addSize" class="com.furnishing.net.controller.GoodAttributeController" method="addSize">
+		   <result   name="login">/WEB-INF/admin/login.jsp</result>
+		    <result name="success">/WEB-INF/admin/addSize.jsp</result>
+		</action>
+		<action name="editSizeWin" class="com.furnishing.net.controller.GoodAttributeController" method="editSizeWin">
+		   <result   name="login">/WEB-INF/admin/login.jsp</result>
+		   <result type="redirect" name="error">sizeManage.jsp</result>
+		   <result name="success">/WEB-INF/admin/editSize.jsp</result>
+		</action>
+		<action name="updateSize" class="com.furnishing.net.controller.GoodAttributeController" method="updateSize">
+		  <result   name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/editSize.jsp</result>
+		</action>
+		<!-- 商品属性管理 -->
+		<action name="productAttributeManage" class="com.furnishing.net.controller.GoodAttributeController"  method="productAttributeManage" >
+		  <result   name="login">/WEB-INF/admin/login.jsp</result>
+		  <result name="success">/WEB-INF/admin/productAttributeManage.jsp</result>
+		</action>
+		<action name="addProductAttrinbuteWin" class="com.furnishing.net.controller.GoodAttributeController" method="addProductAttrinbuteWin">
+		  <result   name="login">/WEB-INF/admin/login.jsp</result>
+		  <result name="success">/WEB-INF/admin/addProductAttribute.jsp</result>
+		</action>
+		<action name="addProductAttribute" class="com.furnishing.net.controller.GoodAttributeController" method="addProductAttribute">
+		   <result   name="login">/WEB-INF/admin/login.jsp</result>
+		  <result name="success">/WEB-INF/admin/addProductAttribute.jsp</result>
+		</action>
+		<action name="editProductAttributeWin" class="com.furnishing.net.controller.GoodAttributeController" method="editProductAttributeWin">
+		    <result   name="login">/WEB-INF/admin/login.jsp</result>
+		     <result type="redirect"  name="error">productAttributeManage.jsp</result>
+		    <result name="success">/WEB-INF/admin/editProductAttribute.jsp</result>
+		</action>
+		<action name="updateProductAttribute" class="com.furnishing.net.controller.GoodAttributeController" method="updateProductAttribute">
+		   <result   name="login">/WEB-INF/admin/login.jsp</result>
+		    <result name="success">/WEB-INF/admin/editProductAttribute.jsp</result>
+		</action>
+		<!--商品规格管理-->
+		<action name="specificationTypeManage" class="com.furnishing.net.controller.GoodAttributeController" method="specificationTypeManage">
+		  <result   name="login">/WEB-INF/admin/login.jsp</result>
+		  <result name="success">/WEB-INF/admin/specificationTypeManage.jsp</result>
+		</action>
+		<action name="addSpecTypeWin" class="com.furnishing.net.controller.GoodAttributeController" method="addSpecTypeWin">
+		  <result   name="login">/WEB-INF/admin/login.jsp</result>
+		  <result name="success">/WEB-INF/admin/addSpecType.jsp</result>
+		</action>
+		<action name="addSpecType" class="com.furnishing.net.controller.GoodAttributeController" method="addSpecType">
+		  <result   name="login">/WEB-INF/admin/login.jsp</result>
+		  <result name="success">/WEB-INF/admin/addSpecType.jsp</result>
+		</action>
+		<action name="editSpecTypeWin" class="com.furnishing.net.controller.GoodAttributeController" method="editSpecTypeWin">
+		   <result   name="login">/WEB-INF/admin/login.jsp</result>
+		  <result name="success">/WEB-INF/admin/editSpecType.jsp</result>
+		</action>
+		<action name="updateSpecType" class="com.furnishing.net.controller.GoodAttributeController"  method="updateSpecType">
+		   <result   name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/editSpecType.jsp</result>
+		</action>
+		<!--规格值管理-->
+		<action name="specificationDataManage" class="com.furnishing.net.controller.GoodAttributeController" method="specificationDataManage">
+		  <result   name="login">/WEB-INF/admin/login.jsp</result>
+		  <result name="success">/WEB-INF/admin/specificationDataManage.jsp</result>
+		  <result name="error">/WEB-INF/admin/specificationTypeManage.jsp</result>
+		</action>
+		<action name="editSpecDataWin" class="com.furnishing.net.controller.GoodAttributeController"  method="editSpecDataWin">
+		   <result   name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/editSpecData.jsp</result>
+		</action>
+		<action name="editSpecData" class="com.furnishing.net.controller.GoodAttributeController"  method="editSpecData" >
+		   <result   name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/editSpecData.jsp</result>
+		</action>		
+		<action name="addSpecDataWin" class="com.furnishing.net.controller.GoodAttributeController" method="addSpecDataWin">
+		   <result  name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/addSpecData.jsp</result>
+		</action>
+		<action name="addSpecData"  class="com.furnishing.net.controller.GoodAttributeController"  method="addSpecData">
+		   <result  name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/addSpecData.jsp</result>
+		</action>
+		<!-- 客户需求管理 -->
+		<action name="customerRequireManage" class="com.furnishing.net.controller.ProductController" method="customerRequireManage">
+		  <result  name="login">/WEB-INF/admin/login.jsp</result>
+		  <result name="success">/WEB-INF/admin/customerRequireManage.jsp</result>
+		</action>
+		<action name="showRequireDetail" class="com.furnishing.net.controller.ProductController" method="showRequireDetail">
+		   <result  name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/showRequireDetail.jsp</result>
+		</action>
+		<action name="checkRequire"  class="com.furnishing.net.controller.ProductController"  method="checkRequire">
+		   <result  name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/showRequireDetail.jsp</result>
+		</action>
+		<!--评价管理-->
+		<action name="adminCommentManage" class="com.furnishing.net.controller.SupplierController" method="adminCommentManage">
+		   <result  name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/adminCommentManage.jsp</result>
+		</action>
+		<action name="deleteAdminSupplierComment"  class="com.furnishing.net.controller.SupplierController"  method="deleteAdminSupplierComment">
+		   <result  name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/adminCommentManage.jsp</result>
+		</action>
+		<!-- 对顾客的评论 -->
+		<action name="adminCustomerCommentManage" class="com.furnishing.net.controller.SupplierController"  method="adminCustomerCommentManage">
+		   <result  name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/adminCustomerCommentManage.jsp</result>
+		</action>
+		<action name="deleteAdminCustomerComment" class="com.furnishing.net.controller.SupplierController" method="deleteAdminCustomerComment">
+		   <result  name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/adminCustomerCommentManage.jsp</result>
+		</action>
+		<!-- 报表管理 -->
+		<action name="adminReportManage" class="com.furnishing.net.controller.AdminController" method="adminReportManage">
+		   <result  name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/adminReportManage.jsp</result>
+		</action>
+		<!-- 导出报表 -->
+		<action name="emportPrintProduct" class="com.furnishing.net.controller.AdminController" method="emportPrintProduct">
+		<result name="success" type="stream">
+		       <param name="contentType">application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</param>
+			   <param name="inputName">inputStream</param>
+			   <param name="contentDisposition">attachment;filename="${downloadFileName}"</param>
+			   <param name="bufferSize">40960</param>
+			 </result>
+			 <result name="error">/WEB-INF/admin/adminReportManage.jsp</result>
+			 <result name="login">/WEB-INF/admin/login.jsp</result>
+		</action>
+		<!--投诉管理-->
+		<action name="complainManage" class="com.furnishing.net.controller.AdminController" method="complainManage">
+		   <result  name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/adminComplain.jsp</result>
+		</action>
+		<action name="processCustomerComplain"  class="com.furnishing.net.controller.AdminController"  method="processCustomerComplain">
+		    <result  name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/processCustomerComplain.jsp</result>
+		</action>
+		<action name="submitProcessInfo" class="com.furnishing.net.controller.AdminController" method="submitProcessInfo">
+		   <result  name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/processCustomerComplain.jsp</result>
+		</action>
+		<!-- 仲裁管理 -->
+		<action name="arbitrationManage"  class="com.furnishing.net.controller.AdminController"  method="arbitrationManage">
+		   <result  name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/arbitrationManage.jsp</result>
+		</action>
+		<action name="processCustomerArbitration" class="com.furnishing.net.controller.AdminController" method="processCustomerComplain">
+		    <result  name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/processArbitration.jsp</result>
+		</action>
+		<action name="submitarbiProcessInfo" class="com.furnishing.net.controller.AdminController" method="submitProcessInfo">
+		    <result  name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/processArbitration.jsp</result>
+		</action>
+		<!-- 退款管理 -->
+		<action name="backupMoneyManage" class="com.furnishing.net.controller.AdminController" method="backupMoneyManage">
+		   <result  name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/backupMoneyManage.jsp</result>
+		</action>
+		<action name="submitBackupMoney" class="com.furnishing.net.controller.AdminController" method="submitBackupMoney">
+		   <result  name="login">/WEB-INF/admin/login.jsp</result>
+		   <result name="success">/WEB-INF/admin/backupMoneyManage.jsp</result>
+		</action>	
+    </package>
+    
+</struts>

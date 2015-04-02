@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<constant name="struts.action.extension" value="action,html,do,jsp" />
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<constant name="struts.custom.i18n.resources" value="TokenInterceptor" />
+	<constant name="struts.multipart.maxSize" value="4300000000" />
+	<!-- 设置上传文件的临时文件夹,默认使用javax.servlet.context.tempdir -->
+	<constant name="struts.multipart.saveDir " value="e:/tmp" />
+	<!-- 设置浏览器是否缓存静态内容,默认值为true(生产环境下使用),开发阶段最好关闭 -->
+	<constant name="struts.serve.static.browserCache" value="false" />
+	<!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<!-- 开发模式下使用,这样可以打印出更详细的错误信息 
+	<constant name="struts.devMode" value="true" />-->
+	<!-- 默认的视图主题 -->
+	<constant name="struts.ui.theme" value="simple" />        
+	<package name="first" namespace="/" extends="struts-default">
+
+		<!-- 定义一个拦截器 ，拦截用户登录超时-->
+		<interceptors>
+			<interceptor name="sessionout"
+				class="com.furnishing.net.util.SessionIterceptor"></interceptor>
+			<!-- 拦截器栈 -->
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="sessionout" />
+			</interceptor-stack>
+		</interceptors>
+
+		<!--
+			<global-results> <result
+			name="nullPointException">/nullPoint.jsp</result> <result
+			name="exception">/exception.jsp</result> </global-results>
+			<global-exception-mappings> <exception-mapping
+			result="nullPointException"
+			exception="java.lang.NullPointException"></exception-mapping>
+			<exception-mapping result="exception"
+			exception="java.lang.Exception"></exception-mapping>
+			</global-exception-mappings>
+		-->
+        <!--首页-->
+		<action name="index" class="com.furnishing.net.controller.HomePageController" method="indexProduct">
+		   <result name="success">/index-product.jsp</result>
+		   <result name="error">/error.jsp</result>
+		</action>
+		<action name="index-product" class="com.furnishing.net.controller.HomePageController" method="indexProduct">
+		   <result name="success">/index-product.jsp</result>
+		   <result name="error">/error.jsp</result>
+		</action>
+		<!--首页相应分类下商品-->
+		<action name="showGoodsInCategory" class="com.furnishing.net.controller.HomePageController" method="showGoodsInCategory">
+		   <result name="success">/product-screen.jsp</result>
+		   <result name="error">/error.jsp</result>
+		</action>
+		<!--商品详情页 -->
+		<action name="showIndexGoodsDetail" class="com.furnishing.net.controller.HomePageController" method="showIndexGoodsDetail">
+		    <result name="success">/product-introduce.jsp</result>
+		    <result name="error">/error.jsp</result>
+		</action>
+		
+
+		<!-- 验证码的生成 -->
+		<action name="image">
+			<result>/image.jsp</result>
+		</action>
+		<!--KE下载上传文件-->
+		 <action name="fileDownload" class="com.furnishing.net.util.FileDownloadAction" method="downloadFile">
+		     <result name="success" type="stream">
+		     	<param name="contentType">application/x-msdownload</param>
+				<param name="inputName">inputStream</param>
+				<param name="bufferSize">40960</param>
+				<param name="contentDisposition">attachment;filename="${downloadFileName}"</param>
+		     </result>
+		 </action>
+		
+        <!--*****************************前台商品展示页面***********************************-->
+       <!--商品展示页面-->
+        <action name="listGoods" class="com.furnishing.net.controller.HomePageController" method="listGoods">
+          <result name="success">/WEB-INF/home/listGoods.jsp</result>
+        </action>
+        <!-- 商品 详情展示页面 -->
+        <action name="showHomeGoodsDetail" class="com.furnishing.net.controller.HomePageController" method="showHomeGoodsDetail">
+          <result name="success">/WEB-INF/home/showHomeGoodsDetail.jsp</result>
+        </action>
+        
+      
+        
+
+	</package>	
+
+	<include file="config/ajax.xml"></include>
+	<include file="config/customer.xml"></include>
+	<include file="config/admin.xml"></include>
+	<include file="config/supplier.xml"></include>	
+</struts>

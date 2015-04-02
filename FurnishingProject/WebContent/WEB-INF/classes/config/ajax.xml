@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+	<struts>
+	<package name="ajax" namespace="/" extends="json-default">
+	
+	  <!--管理员源密码校验-->
+	  <action name="validateOldPass" class="com.furnishing.net.controller.AdminController" method="validateOldPass">
+	    <result type="json"></result>
+	  </action>
+	  <!--供应商原密码校验 -->
+	  <action name="validateSupplierSoursePass" class="com.furnishing.net.controller.SupplierController" method="validateSupplierSoursePass">
+	    <result type="json"></result>
+	  </action>
+	  <!-- 校验用户原密码 -->
+	  <action name="validateCustomerSoursePass" class="com.furnishing.net.controller.CustomerController" method="validateCustomerSoursePass">
+	    <result type="json"></result>
+	  </action>
+	  <!--系统操作员密码-->
+	  <action name="validAdminName" class="com.furnishing.net.controller.AdminController" method="validAdminName">
+	    <result type="json"></result>
+	  </action>
+	  <!--删除系统操作员 -->
+	  <action name="delAdmin" class="com.furnishing.net.controller.AdminController" method="delAdmin">
+	    <result type="json"></result>
+	  </action>
+	  <!-- 锁定系统操作员 -->
+	  <action name="lockOperateAdmin" class="com.furnishing.net.controller.AdminController" method="lockOperateAdmin">
+	    <result type="json"></result>
+	  </action>
+	  <!--重置密码 -->
+	  <action name="adminReset" class="com.furnishing.net.controller.AdminController" method="adminReset">
+	    <result type="json"></result>
+	  </action>
+	  <!--删除操作员角色-->
+	  <action name="delRole" class="com.furnishing.net.controller.AdminController" method="delRole">
+	    <result type="json"></result>
+	  </action>
+	  <action name="validRoleName" class="com.furnishing.net.controller.AdminController" method="validRoleName">
+	    <result type="json"></result>
+	  </action>
+	  <!-- 删除商品分类 -->
+	  <action name="delGoodsCategory" class="com.furnishing.net.controller.GoodsController" method="delGoodsCategory">
+	    <result type="json"></result>
+	   </action>
+	   <action name="delGoodsType" class="com.furnishing.net.controller.GoodsController" method="delGoodsType">
+	     <result type="json"></result>
+	   </action>
+	   <!--删除供应商等级 -->
+	  <action name="delSupplierClass" class="com.furnishing.net.controller.SupplierController" method="delSupplierClass">
+	    <result type="json"></result>
+	  </action>
+	  <!-- 删除供应商 -->
+	  <action name="deleteSupplier" class="com.furnishing.net.controller.SupplierController" method="deleteSupplier">
+	    <result type="json"></result>
+	  </action>
+	  <!-- 根据省加载城市 -->
+	  <action name="loadCityByProvince" class="com.furnishing.net.controller.SupplierController" method="loadCityByProvince">
+	    <result type="json"></result>
+	  </action>
+	  <!--根据城市加载县 -->
+	  <action name="loadCountyByCity" class="com.furnishing.net.controller.SupplierController" method="loadCountyByCity">
+	    <result type="json"></result>
+	  </action>
+	  <!-- 删除会员 -->
+	  <action name="deleteCustomer" class="com.furnishing.net.controller.CustomerController" method="deleteCustomer">
+	     <result type="json"></result>
+	  </action>
+	  <action name="delGoodsStyle" class="com.furnishing.net.controller.GoodsController" method="delGoodsStyle">
+	    <result type="json"></result>
+	  </action>
+	  <!-- 删除品牌 -->
+	  <action name="delBrand" class="com.furnishing.net.controller.GoodsController" method="delBrand">
+	    <result type="json"></result>
+	  </action>
+	  <!-- 删除类型品牌关联 -->
+	  <action name="delTypeBrand" class="com.furnishing.net.controller.GoodsController" method="delTypeBrand">
+	     <result type="json"></result>
+	  </action>
+	  <!--删除订单-->
+	  <action name="delOrder" class="com.furnishing.net.controller.ShopController" method="delOrder">
+	     <result type="json"></result>
+	  </action>
+	  <!--供应商删除操作员-->
+	  <action name="delSupplierUser" class="com.furnishing.net.controller.SupplierController" method="delSupplierUser">
+	    <result type="json"></result>
+	  </action>
+	  <action name="validSupplierUserLoginName" class="com.furnishing.net.controller.SupplierController" method="validSupplierUserLoginName">
+	    <result type="json"></result>
+	  </action>
+	  <!-- 删除物流号 -->
+	  <action name="delLogisticNumber" class="com.furnishing.net.controller.SupplierController" method="delLogisticNumber">
+	    <result type="json"></result>
+	  </action>
+	  <!-- 删除物流详情 -->
+	  <action name="delLogisticDetail" class="com.furnishing.net.controller.SupplierController" method="delLogisticDetail">
+	    <result type="json"></result>
+	  </action>
+	  <!-- 删除商品 -->
+	  <action name="deleteGoods" class="com.furnishing.net.controller.GoodsController" method="deleteGoods">
+	     <result type="json"></result>
+	  </action>
+	  <!--删除商品图片-->
+	  <action name="delGoodsImage" class="com.furnishing.net.controller.GoodsController" method="delGoodsImage">
+	    <result type="json"></result>
+	  </action>
+	  <!-- 根据商品分类获得商品类型 -->
+	  <action name="loadTypeByCategory" class="com.furnishing.net.controller.GoodsController" method="loadTypeByCategory">
+	    <result type="json"></result>
+	  </action>
+	  <!-- 根据商品类型加载品牌 -->
+	  <action name="loadBrandByGoodsType" class="com.furnishing.net.controller.GoodsController" method="loadBrandByGoodsType">
+	     <result type="json"></result>
+	  </action>
+	  <!-- 根据商品类型获得商品 -->
+	  <action name="loadGoodsByGoodsType" class="com.furnishing.net.controller.GoodsController" method="loadGoodsByGoodsType">	  
+	    <result name="success" type="json"></result>
+	  </action>
+	  <!-- 删除产品 -->
+	  <action name="deleteProduct" class="com.furnishing.net.controller.ProductController" method="deleteProduct">
+	     <result name="success" type="json"></result>
+	  </action>
+	  <!--删除材质-->
+	  <action name="deleteMaterial" class="com.furnishing.net.controller.GoodAttributeController" method="deleteMaterial">
+	     <result name="success" type="json"></result>
+	  </action>
+	  <!-- 删除颜色 -->
+	  <action name="deleteColor" class="com.furnishing.net.controller.GoodAttributeController" method="deleteColor">
+	     <result name="success" type="json"></result>
+	  </action>
+	  <!-- 删除尺寸 -->
+	  <action name="deleteSize" class="com.furnishing.net.controller.GoodAttributeController"  method="deleteSize">
+	     <result name="success" type="json"></result>
+	  </action>
+	  <!-- 删除商品扩展属性 -->
+	  <action name="deleteProductAttribute" class="com.furnishing.net.controller.GoodAttributeController" method="deleteProductAttribute">
+	     <result name="success" type="json"></result>
+	  </action>
+	  <!-- 删除商品规格 值-->
+	  <action name="deleteSpecificationData" class="com.furnishing.net.controller.GoodAttributeController" method="deleteSpecificationData">
+	     <result name="success" type="json"></result>
+	  </action>
+	  <!--删除商品规格类型-->
+	  <action name="deleteSpecificationType" class="com.furnishing.net.controller.GoodAttributeController" method="deleteSpecificationType">
+	     <result name="success" type="json"></result>
+	  </action>
+	  <!-- 删除类型风格关联 -->
+	  <action name="delTypeStyle" class="com.furnishing.net.controller.GoodAttributeController" method="delTypeStyle">
+	     <result name="success" type="json"></result>
+	  </action>
+	  <!-- 根据商品获取商品的相关属性 -->
+	  <action name="loadGoodsAttributeByGoodsId" class="com.furnishing.net.controller.ProductController" method="loadGoodsAttributeByGoodsId">
+	     <result name="success" type="json"></result>
+	  </action>
+	  <!-- 删除商品分类和类型关联 -->
+	  <action name="delGoodsCateType" class="com.furnishing.net.controller.ProductController" method="delGoodsCateType">
+	     <result name="success" type="json"></result>
+	  </action>
+	  <!-- 删除收货地址 -->
+	  <action name="deleteMyAddress" class="com.furnishing.net.controller.CustomerController" method="deleteMyAddress">
+	    <result name="success" type="json"></result>
+	  </action>
+	  <!--删除我的需求-->
+	   <action name="deleteMyProduct" class="com.furnishing.net.controller.CustomerController" method="deleteMyProduct">
+	    <result name="success" type="json"></result>
+	  </action>
+	  <!-- 审查需求 -->
+	  <action name="certificateRequire" class="com.furnishing.net.controller.ProductController" method="certificateRequire">	  
+	     <result name="success" type="json"></result>
+	  </action>
+	  <!-- 删除购买历史店铺 -->
+	  <action name="delCustomerHistory" class="com.furnishing.net.controller.CustomerController" method="delCustomerHistory">
+	     <result name="success" type="json"></result>
+	  </action>
+	  <!-- 删除我的收藏 -->
+	  <action name="delMyCollection" class="com.furnishing.net.controller.CustomerController" method="delMyCollection">
+	    <result name="success" type="json"></result>
+	  </action>
+	  <!-- 获取颜色效果图 -->
+	  <action name="loadGoodsColorPic" class="com.furnishing.net.controller.GoodsController" method="loadGoodsColorPic">
+	    <result type="json"></result>
+	  </action>
+	  <!-- 获取材质效果 -->
+	  <action name="loadGoodsMaterialPic" class="com.furnishing.net.controller.GoodsController" method="loadGoodsMaterialPic">
+	    <result type="json"></result>
+	  </action>
+	  <!-- 删除订单评价项 -->
+	  <action name="deleteItemComment" class="com.furnishing.net.controller.ShopController" method="deleteItemComment">
+	    <result type="json"></result>
+	  </action>
+	  <!-- 删除用户账户关联银行 -->
+	  <action name="deleteCustomerBank" class="com.furnishing.net.controller.CustomerController" method="deleteCustomerBank">
+	      <result type="json"></result>
+	  </action>
+	   <action name="fileManage" class="com.furnishing.net.util.FileManageAction">  
+            <result type="json"></result>  
+        </action>  
+        <action name="fileUpload" class="com.furnishing.net.util.FileUploadAction">  
+            <result type="json">  
+                <param name="includeProperties">  
+                     error,url,message  
+                </param>
+                 <param name="contentType">text/html</param>   
+            </result>  
+        </action>
+	</package>
+</struts>
